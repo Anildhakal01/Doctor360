@@ -6,7 +6,6 @@ public class AdminLoginReceiveParams {
      * success : false
      * message : Invalid Credentials
      */
-
     private String success;
     private String message;
 
