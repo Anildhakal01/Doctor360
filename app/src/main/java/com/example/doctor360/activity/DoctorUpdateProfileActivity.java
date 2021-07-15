@@ -64,6 +64,7 @@ public class DoctorUpdateProfileActivity extends AppCompatActivity implements Vi
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     private static final String TAG = "DoctorUpdateProfileActi";
 
+
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
