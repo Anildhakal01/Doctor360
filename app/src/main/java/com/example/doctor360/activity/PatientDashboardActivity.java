@@ -151,6 +151,7 @@ public class PatientDashboardActivity extends AppCompatActivity implements Navig
             patientLoginImage.setImageResource(R.drawable.noimage);
         }
 
+
         txtPatientViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
