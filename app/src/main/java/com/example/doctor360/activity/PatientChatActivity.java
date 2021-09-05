@@ -55,6 +55,7 @@ public class PatientChatActivity extends AppCompatActivity {
         doctorName = intent.getStringExtra("doc_name");
         doctorPhoto = intent.getStringExtra("doc_photo");
 
+
         txtToolbarDoctorName.setText("DR. "+doctorName);
 
         if(doctorPhoto!=null){
