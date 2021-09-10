@@ -91,7 +91,6 @@ public class AllAppointRequestDoctorAdapter extends RecyclerView.Adapter<Recycle
         });
 
     }
-
     @Override
     public int getItemCount() {
         return dataBeanList.size();
