@@ -9,16 +9,15 @@ import android.os.Bundle;
 
 import com.example.doctor360.R;
 import com.example.doctor360.fragment.ChatAcceptedDoctorFragment;
+import com.example.doctor360.fragment.DoctorChatListFragment;
 import com.example.doctor360.fragment.DoctorHomeFragment;
 import com.example.doctor360.fragment.FAQFragment;
 import com.example.doctor360.fragment.RequestAppointmentDoctorFragment;
 import com.example.doctor360.fragment.RequestChatDoctorFragment;
 import com.example.doctor360.fragment.ScheduledAppointmentDoctorFragment;
-import com.example.doctor360.fragment.ScheduledAppointmentPatientFragment;
 import com.example.doctor360.helper.ConnectionDetector;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.doctor360.utils.OnDataPasser;
 import com.google.android.material.internal.NavigationMenuView;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.util.Base64;
 import android.util.Log;
@@ -48,9 +47,8 @@ import android.view.Menu;
 import android.widget.TextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import es.dmoral.toasty.Toasty;
 
-public class DoctorDashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class DoctorDashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnDataPasser {
 
     TextView toolbarTitle, txtDoctorLoginName, txtDoctorViewProfile;
     CircleImageView doctorLoginImage;
@@ -98,20 +96,27 @@ public class DoctorDashboardActivity extends AppCompatActivity implements Naviga
         emailFromProfile = intent1.getStringExtra("from_profile_email");
         imageFromProfile = intent1.getStringExtra("from_profile_image");
 
-        Hawk.init(getApplicationContext()).build();
-        Hawk.put("request_doctor_id", doctorID);
-
         _context = getApplicationContext();
 
-        if(IdFromProfile!= null)
-            strDoctorID = IdFromProfile;
-        else
-           strDoctorID = doctorID;
+        Hawk.init(getApplicationContext()).build();
 
-        if(doctorID!= null)
+        if(doctorID!= null) {
             strDoctorID = doctorID;
-        else
-           strDoctorID = IdFromProfile;
+            Hawk.put("request_doctor_id", strDoctorID);
+        }
+        else {
+            strDoctorID = IdFromProfile;
+            Hawk.put("request_doctor_id", strDoctorID);
+        }
+
+        if(IdFromProfile!= null) {
+            strDoctorID = IdFromProfile;
+            Hawk.put("request_doctor_id", strDoctorID);
+        }
+        else {
+            strDoctorID = doctorID;
+            Hawk.put("request_doctor_id", strDoctorID);
+        }
 
         if(nameFromProfile!= null)
             txtDoctorLoginName.setText("DR. "+nameFromProfile);
@@ -302,6 +307,14 @@ public class DoctorDashboardActivity extends AppCompatActivity implements Naviga
                 break;
             }
 
+            case R.id.nav_doctor_chat_room: {
+                getSupportFragmentManager().popBackStackImmediate();
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragmentContainer2,new DoctorChatListFragment()).addToBackStack("").commit();
+                toolbarTitle.setText(getString(R.string.menu_chat_room));
+                break;
+            }
+
             case R.id.nav_doctor_faq: {
                 getSupportFragmentManager().popBackStackImmediate();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -361,16 +374,13 @@ public class DoctorDashboardActivity extends AppCompatActivity implements Naviga
         alert.show();
     }
 
-    public void setToolbarAndNavView5(Context context, int checked, String title){
-        navigationView.getMenu().getItem(checked).setChecked(true);
+    @Override
+    public void onChangeToolbarTitle(String title) {
         toolbarTitle.setText(title);
-        _context = context;
     }
 
-    public void setToolbarAndNavView6(Context context1, int checked, String title){
-        navigationView.getMenu().getItem(checked).setChecked(true);
-        toolbarTitle.setText(title);
-        _context = context1;
+    @Override
+    public void setCheckedNavigationItem(int item) {
+        navigationView.getMenu().getItem(item).setChecked(true);
     }
-
 }

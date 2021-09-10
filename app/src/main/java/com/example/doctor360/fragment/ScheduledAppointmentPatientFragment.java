@@ -68,6 +68,7 @@ public class ScheduledAppointmentPatientFragment extends Fragment {
         strPatientID = Hawk.get("request_patient_id");
 
         connectionDetector = new ConnectionDetector(context);
+
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

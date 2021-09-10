@@ -1,2 +1,0 @@
-GIT_AUTHOR_DATE='2021-06-23 19:11:00' GIT_COMMITTER_DATE="2021-06-23 19:11:00" git commit -m "login page redesigned"
-GIT_AUTHOR_DATE='2021-06-26 19:11:00' GIT_COMMITTER_DATE="2021-06-26 19:11:00" git commit -m "patient and doctor login page created"

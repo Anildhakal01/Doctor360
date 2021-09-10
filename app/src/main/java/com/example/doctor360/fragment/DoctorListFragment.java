@@ -16,7 +16,6 @@ import com.google.android.material.tabs.TabLayout;
 
 public class DoctorListFragment extends Fragment {
 
-
     private View rootView;
     private ViewPager viewPager;
     private DoctorListPagerAdapter doctorListPagerAdapter;

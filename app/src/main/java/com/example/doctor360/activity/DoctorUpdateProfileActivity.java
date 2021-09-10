@@ -30,6 +30,7 @@ import com.example.doctor360.network.NetworkClient;
 import com.example.doctor360.network.ServiceGenerator;
 import com.example.doctor360.utils.SquareImageView;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+import com.orhanobut.hawk.Hawk;
 import com.thecode.aestheticdialogs.AestheticDialog;
 import com.thecode.aestheticdialogs.DialogStyle;
 import com.thecode.aestheticdialogs.DialogType;
@@ -63,7 +64,6 @@ public class DoctorUpdateProfileActivity extends AppCompatActivity implements Vi
     String mobilePattern = "^[0-9]{10}$";
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     private static final String TAG = "DoctorUpdateProfileActi";
-
 
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
@@ -394,7 +394,7 @@ public class DoctorUpdateProfileActivity extends AppCompatActivity implements Vi
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        Intent intent=new Intent(DoctorUpdateProfileActivity.this, DoctorDashboardActivity.class);
+        Intent intent=new Intent(DoctorUpdateProfileActivity.this, DoctorProfileActivity.class);
         intent.putExtra("from_profile_id", strDoctorId);
         intent.putExtra("from_profile_name", strUpdateName);
         intent.putExtra("from_profile_image", strUpdatePP);
@@ -413,10 +413,10 @@ public class DoctorUpdateProfileActivity extends AppCompatActivity implements Vi
         if(id==android.R.id.home)
         {
             finish();
-            Intent intent=new Intent(DoctorUpdateProfileActivity.this, DoctorDashboardActivity.class);
-            intent.putExtra("from_profile_id", strDoctorId);
+            Intent intent=new Intent(DoctorUpdateProfileActivity.this, DoctorProfileActivity.class);
+            intent.putExtra("doctor_profile_id", strDoctorId);
             intent.putExtra("from_profile_name", strUpdateName);
-            intent.putExtra("from_profile_image", strUpdatePP);
+            intent.putExtra("doctor_profile_image", strUpdatePP);
             startActivity(intent);
         }
         return true;
