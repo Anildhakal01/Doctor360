@@ -11,6 +11,7 @@
     tools:context=".activity.LoginActivity"
     android:focusableInTouchMode="true"
     android:focusable="false">
+
     <View
         android:id="@+id/topView"
         android:layout_width="0dp"

@@ -22,7 +22,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 
-
 import com.cazaea.sweetalert.SweetAlertDialog;
 import com.example.doctor360.R;
 import com.example.doctor360.app.MyApplication;
@@ -71,7 +70,6 @@ public class PatientRegisterActivity extends AppCompatActivity implements View.O
     String mobilePattern = "^[0-9]{10}$";
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     private static final String TAG = "PatientRegisterActivity";
-
 
 
     @Override
